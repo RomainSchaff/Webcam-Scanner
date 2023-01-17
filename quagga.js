@@ -4,8 +4,8 @@ Quagga.init(
     inputStream: {
       type: "Live",
       constraints: {
-        width: 640,
-        height: 480,
+        width: 500,
+        height: 375,
         facingMode: "environment",
       },
     },
