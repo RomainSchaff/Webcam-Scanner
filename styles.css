@@ -1,0 +1,93 @@
+h1 {
+  color: rgb(14, 14, 14);
+  padding: 0 5%;
+}
+
+body {
+  margin: 50px;
+  background-color: cornflowerblue;
+}
+
+#videoElement {
+  width: 500px;
+  height: 375px;
+  background-color: rgb(32, 40, 153);
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+#savedVideo {
+  width: 500px;
+  height: 375px;
+  background-color: rgb(32, 40, 153);
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+#container {
+  padding: 0 5%;
+  display: flex;
+  justify-content: flex-start;
+  background-color: cornflowerblue;
+  border-radius: 10px;
+}
+
+#canvas_photo {
+  width: 500px;
+  height: 375px;
+  background-color: rgb(32, 40, 153);
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.button_div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+#button_div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+button,
+a {
+  position: relative;
+  left: -140px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: hsl(167, 52%, 20%);
+}
+
+button:hover,
+a:hover {
+  cursor: pointer;
+  color: black;
+  background-color: rgb(192, 255, 241);
+  transform: scale(1.05);
+  box-shadow: 2px 2px 5px black;
+}
+
+#createdDiv {
+  width: 100%;
+  background-color: #666;
+}
+
+.disabled_button {
+  background-color: #666;
+  color: white;
+}
+
+.disabled_button:hover {
+  background-color: #666;
+  transform: scale(1);
+  box-shadow: none;
+  color: white;
+}
