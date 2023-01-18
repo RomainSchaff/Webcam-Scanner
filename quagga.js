@@ -2,12 +2,8 @@
 Quagga.init(
   {
     inputStream: {
-      type: "Live",
-      constraints: {
-        width: 500,
-        height: 375,
-        facingMode: "environment",
-      },
+      type: "LiveStream",
+      target: document.getElementById("videoElement"),
     },
     locator: {
       patchSize: "medium",
