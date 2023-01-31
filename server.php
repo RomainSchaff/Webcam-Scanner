@@ -43,20 +43,4 @@ if ($_POST && $_POST['video_data'] && $_POST['date']) {
   }
 }
 
-// if ($_POST && $_FILES['video_data']) {
-//   // Récupération des données du fichier vidéo
-//   $videoData = file_get_contents($_FILES['video_data']['tmp_name']);
-
-//   if (file_put_contents("Ma_video.mp4", $videoData)) {
-//     // Insertion des données dans la base de données
-//     if ($conn->query("INSERT INTO `videos` (`id`, `video`, `date`) VALUES (NULL, '$videoData', NULL);")) {
-//       echo "Enregistrement BDD réussi";
-//     } else {
-//       echo "Enregistrement failed";
-//     }
-//   } else {
-//     echo "Erreur d'enregistrement";
-//   }
-// }
-
 ?>

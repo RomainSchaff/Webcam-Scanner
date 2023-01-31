@@ -2,18 +2,19 @@ const video = document.getElementById("videoElement");
 const buttonFetch = document.getElementById("fetch");
 const downloadButton = document.getElementById("download_video_button");
 const canvas = document.getElementById("canvas_photo");
-const buttonDiv = document.getElementById("button_div");
 const savedVideo = document.getElementById("savedVideo");
 const container = document.getElementById("container");
+const cancelPictureButton = document.getElementById("cancel-picture");
 const cancelButton = document.getElementById("cancel");
 const PlayStopButton = document.getElementById("play_stop_button");
 const TakeSavePictureButton = document.getElementById(
   "take_save_picture_button"
 );
+const lastDiv = document.getElementById("last-div");
 
 let stream;
 let mediaRecorder;
-let chunks = [];
+
 let playing = false;
 let picture = false;
 
@@ -46,7 +47,7 @@ PlayStopButton.addEventListener("click", () => {
       "getUserMedia" in navigator.mediaDevices
     ) {
       console.log("Prêt à travailler !");
-
+      console.log("Quagga a démarré");
       navigator.mediaDevices
         .getUserMedia({ audio: true, video: true })
         .then(function (s) {
@@ -55,6 +56,7 @@ PlayStopButton.addEventListener("click", () => {
           mediaRecorder = new MediaRecorder(stream);
           mediaRecorder.start();
           console.log(mediaRecorder.state);
+          let chunks = [];
           mediaRecorder.ondataavailable = (e) => {
             chunks.push(e.data);
           };
@@ -68,14 +70,13 @@ PlayStopButton.addEventListener("click", () => {
             reader.readAsDataURL(blob);
             let base64;
             reader.onload = function () {
-              console.log(reader.result);
               base64 = reader.result;
             };
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
             const date = dateFormat();
             savedVideo.src = url;
-            buttonDiv.appendChild(a);
+            lastDiv.appendChild(a);
             a.innerText = "Download";
             a.href = url;
             a.download = `enregistrementdu${date}.mp4`;
@@ -104,13 +105,11 @@ PlayStopButton.addEventListener("click", () => {
             let settings = track.getSettings();
             console.log(settings.width + "x" + settings.height);
           });
-        })
-        .catch(function (error) {
-          console.log(`Something wrong: ${error}`);
         });
       setTimeout(function () {
         if (mediaRecorder.state !== "inactive") {
           mediaRecorder.stop();
+          console.log(mediaRecorder.state);
         }
       }, 6000);
     } else {
@@ -143,6 +142,7 @@ TakeSavePictureButton.addEventListener("click", () => {
     // Dessinez l'image sur le canvas à partir de l'élément video
     ctx.drawImage(video, 0, 0);
     picture = true;
+    cancelPictureButton.removeAttribute("class");
     TakeSavePictureButton.innerHTML = `<i class="fa-solid fa-sd-card"></i>`;
   } else if (picture == true) {
     const imagedata = canvas.toDataURL("image/jpeg");
@@ -158,6 +158,22 @@ TakeSavePictureButton.addEventListener("click", () => {
     picture = false;
   } else {
     alert("Vous devez activer la vidéo avant de prendre une photo");
+  }
+});
+
+cancelPictureButton.addEventListener("click", () => {
+  if (picture) {
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    // Dessinez l'image sur le canvas à partir de l'élément video
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    TakeSavePictureButton.innerHTML = `<i class="fa-solid fa-camera-retro"></i>`;
+    cancelPictureButton.classList += "disabled_button";
+    picture = false;
+  } else {
+    alert("Voud devez prendre une photo avant de reset");
   }
 });
 

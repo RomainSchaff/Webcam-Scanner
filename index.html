@@ -14,42 +14,34 @@
   <body>
     <h1>Webcam</h1>
     <div id="container">
-      <video autoplay id="videoElement"></video>
-      <div class="button_div">
+      <div class="screen-div">
+        <video autoplay id="videoElement"></video>
         <button id="play_stop_button"><i class="fa-solid fa-play"></i></button>
-        <!-- <button id="start_record">
-          <i class="fa-solid fa-play"></i>
-        </button>
-        <button id="stop_record" class="disabled_button" disabled>
-          <i class="fa-solid fa-pause"></i>
-        </button> -->
       </div>
 
-      <canvas id="canvas_photo" width="500" height="375"></canvas>
-      <div class="button_div">
+      <div class="screen-div">
+        <canvas id="canvas_photo" width="500" height="375"></canvas>
+        <button id="cancel-picture" class="disabled_button">
+          <i class="fa-regular fa-rectangle-xmark"></i>
+        </button>
         <button id="take_save_picture_button" class="disabled_button">
           <i class="fa-solid fa-camera-retro"></i>
         </button>
-        <!-- <button id="take_picture" class="disabled_button" disabled>
-          <i class="fa-solid fa-camera-retro"></i>
-        </button>
-        <button id="save_picture" class="disabled_button" disabled>
-          <i class="fa-solid fa-sd-card"></i>
-        </button> -->
       </div>
-      <video id="savedVideo" controls></video>
-      <div id="button_div">
+
+      <div class="screen-div">
+        <video id="savedVideo" controls></video>
         <button id="cancel" class="disabled_button">
           <i class="fa-regular fa-rectangle-xmark"></i>
         </button>
         <button id="fetch"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
     </div>
+    <div id="last-div"></div>
 
-    <!-- <img id="my-image" src="path/to/image.jpg" alt="image" /> -->
     <!-- Scripts -->
     <script src="quagga.min.js"></script>
-    <script src="script.js"></script>
     <script src="quagga.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
