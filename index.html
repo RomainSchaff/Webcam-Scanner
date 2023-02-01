@@ -12,11 +12,14 @@
     ></script>
   </head>
   <body>
-    <h1>Webcam</h1>
+    <h1>Webcam scan</h1>
     <div id="container">
       <div class="screen-div">
         <video autoplay id="videoElement"></video>
         <button id="play_stop_button"><i class="fa-solid fa-play"></i></button>
+        <button id="scan_stop_button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </div>
 
       <div class="screen-div">
@@ -37,6 +40,7 @@
         <button id="fetch"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
     </div>
+    <div id="dldiv"></div>
     <div id="last-div"></div>
 
     <!-- Scripts -->

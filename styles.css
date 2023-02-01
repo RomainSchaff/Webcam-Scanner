@@ -1,6 +1,7 @@
 h1 {
   color: rgb(14, 14, 14);
   padding: 0 5%;
+  text-align: center;
 }
 
 body {
@@ -31,7 +32,7 @@ p {
 #container {
   padding: 0 5%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   background-color: cornflowerblue;
   border-radius: 10px;
 }
@@ -97,6 +98,12 @@ a:hover {
   left: auto;
 }
 
+#scan_stop_button {
+  position: absolute;
+  right: 0;
+  left: auto;
+}
+
 .disabled_button {
   background-color: #666;
   color: white;
@@ -111,9 +118,23 @@ a:hover {
 
 #last-div {
   background-color: white;
-  border: 2px black solid;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  margin: 15px 12%;
+}
+
+.code_result_container {
+  border: 1px solid black;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+#dldiv {
+  background-color: cornflowerblue;
+  display: flex;
+  justify-content: flex-end;
   margin: 20px 5%;
 }
 

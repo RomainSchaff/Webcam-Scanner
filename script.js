@@ -11,6 +11,7 @@ const TakeSavePictureButton = document.getElementById(
   "take_save_picture_button"
 );
 const lastDiv = document.getElementById("last-div");
+const dlDiv = document.getElementById("dldiv");
 
 let stream;
 let mediaRecorder;
@@ -38,6 +39,7 @@ PlayStopButton.addEventListener("click", () => {
     }
     console.log(mediaRecorder.state);
     stream.getVideoTracks().forEach((track) => track.stop());
+    stream.getAudioTracks().forEach((track) => track.stop());
     TakeSavePictureButton.classList += "disabled_button";
     playing = false;
     PlayStopButton.innerHTML = `<i class="fa-solid fa-play"></i>`;
@@ -47,7 +49,6 @@ PlayStopButton.addEventListener("click", () => {
       "getUserMedia" in navigator.mediaDevices
     ) {
       console.log("Prêt à travailler !");
-      console.log("Quagga a démarré");
       navigator.mediaDevices
         .getUserMedia({ audio: true, video: true })
         .then(function (s) {
@@ -76,7 +77,7 @@ PlayStopButton.addEventListener("click", () => {
             const a = document.createElement("a");
             const date = dateFormat();
             savedVideo.src = url;
-            lastDiv.appendChild(a);
+            dlDiv.appendChild(a);
             a.innerText = "Download";
             a.href = url;
             a.download = `enregistrementdu${date}.mp4`;
