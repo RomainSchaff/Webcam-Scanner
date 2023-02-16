@@ -15,9 +15,9 @@ if ($_POST && $_POST['image_data'] && $_POST['date']) {
     $base64 = base64_encode($jpegImage);
     $date = $_POST['date'];
     if ($conn->query("INSERT INTO `images` (`id`, `image`, `date`) VALUES (NULL, '$base64', '$date');")) {
-      echo "Enregistrement BDD réussi";
+      echo "Enregistrement image BDD réussi";
     } else {
-      echo "Enregistrement failed";
+      echo "Enregistrement image failed";
     }
   } else {
     echo "Erreur d'enregistrement";
@@ -32,9 +32,9 @@ if ($_POST && $_POST['video_data'] && $_POST['date']) {
   $date = $_POST['date'];
   if (file_put_contents($final_path, $videoData2)) {
     if ($conn->query("INSERT INTO `videos` (`id`, `video`, `date`) VALUES (NULL, '$videoData', '$date');")) {
-      echo "Enregistrement BDD réussi";
+      echo "Enregistrement video BDD réussi";
     } else {
-      echo "Enregistrement failed";
+      echo "Enregistrement video failed";
     }
   } else {
     echo "Erreur d'enregistrement";
